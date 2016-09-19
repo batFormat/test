@@ -9,7 +9,7 @@ class QueryBuilder
         $this->pdo = $pdo;
     }
 
-    /*
+    /**
     * Select all cities
     */
     public function selectAllCity($table)
@@ -18,10 +18,10 @@ class QueryBuilder
 
         $state->execute();
 
-        return  $state->fetchAll(PDO::FETCH_CLASS);
+        return  $state->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    /*
+    /**
     * Select all streets
     */
 
@@ -36,4 +36,19 @@ class QueryBuilder
         return $state->fetchAll(PDO::FETCH_ASSOC);
 
     }
+
+   /**
+    * Select city info 
+    */
+    public function selectCityInfo($cityId)
+    {
+        $sql = "select description from city where id = {$cityId}";
+
+        $state = $this->pdo->prepare($sql);
+
+        $state->execute();
+
+        return $state->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
 }
