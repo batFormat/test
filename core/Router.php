@@ -9,7 +9,6 @@ class Router
 
 	];
 
-	
 	public static function load($file) {
 
 		$router = new static;
